@@ -16,3 +16,5 @@ func main() {
 	}
 	fmt.Print(input)
 }
+
+// Оно Работает
