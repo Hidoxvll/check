@@ -1,20 +1,26 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
-)
+import "fmt"
 
-func main() {
-	fmt.Print("Введите ваше имя")
-	reader := bufio.NewReader(os.Stdin)
-	input, err := reader.ReadString('\n')
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Print(input)
+type Animal interface {
+	Speack() string
+}
+type Dog struct{}
+
+func (Dog) Speack() string {
+	return "Woof!"
 }
 
-// Оно Работает
+type Cat struct{}
+
+func (Cat) Speack() string {
+	return "Nice to meet you!"
+}
+
+func main() {
+	var a Animal
+	a = Dog{}
+	fmt.Printf("Dog voice: %s\n", a.Speack())
+	a = Cat{}
+	fmt.Printf("Cat voice: %s\n", a.Speack())
+}
